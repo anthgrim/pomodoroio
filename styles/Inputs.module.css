@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input_container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 2rem;
+}
+
+.label {
+  color: var(--color-font);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 16px;
+  line-height: 20px;
+  border: none;
+  color: var(--color-font);
+  background-color: #f7f7f8;
+}
+
+.error {
+  color: var(--color-red);
+}
+
+.input:focus {
+  outline: 0 none;
+}

@@ -1,0 +1,33 @@
+.auth_container {
+  display: grid;
+  grid-template-columns: 25% 70%;
+}
+
+.auth_form {
+  height: 100vh;
+  display: flex;
+  padding: 50px;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  background-color: lightblue;
+}
+
+.auth_form_section {
+  margin-bottom: 2rem;
+}
+
+.auth_form_header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth_form_title {
+  font-size: 2.5rem;
+}
+
+.auth_form_subtitle {
+  font-size: 1.75rem;
+}

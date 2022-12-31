@@ -1,3 +1,4 @@
+import styles from '../../styles/Buttons.module.css'
 import { useSession, signIn, signOut } from 'next-auth/react'
 
 const LoginButton = () => {
@@ -8,12 +9,16 @@ const LoginButton = () => {
       {session ? (
         <>
           Signed in as {session?.user?.email} <br />
-          <button onClick={() => signOut()}>Sign Out</button>
+          <button className={styles.button} onClick={() => signOut()}>
+            Sign Out
+          </button>
         </>
       ) : (
         <>
           Not signed in <br />
-          <button onClick={() => signIn()}>Sign In</button>
+          <button className={styles.button} onClick={() => signIn()}>
+            Sign In
+          </button>
         </>
       )}
     </>
