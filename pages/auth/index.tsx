@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Image from 'next/image'
 import styles from '../../styles/Forms.module.css'
 import { SignIn, SignUp, AuthFormLogo } from '../../components'
 
