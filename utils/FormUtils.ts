@@ -1,6 +1,9 @@
+import generalFormatter from 'general-formatter'
+import { SignInForm, SignUpForm } from '../types'
+
 interface ValidateInputResponse {
-  form: Object
-  isValid: boolean
+  form: SignInForm | SignUpForm | Object
+  hasErrors: boolean
 }
 
 /**
@@ -9,21 +12,34 @@ interface ValidateInputResponse {
  * @param {CallableFunction} stateSetter
  * @returns {ValidateInputResponse} Response object containing validated form with the found errors, and the isValid boolean
  */
-export const validateInputs = (
-  form: Object,
+export const validateAuthInputs = (
+  form: SignInForm | SignUpForm,
   stateSetter: CallableFunction
 ): ValidateInputResponse => {
-  let isValid: boolean = true
+  let hasErrors: boolean = false
 
   const validatedForm: Object = {}
 
   for (const key in form) {
     validatedForm[key] = form[key]
 
-    if (form[key].required) {
-      if (form[key].type.includes('string')) {
-        if (form[key].value.trim() === '') {
-          form[key].error = 'Required'
+    if (validatedForm[key].required) {
+      // Validate strings
+      if (validatedForm[key].type.includes('string')) {
+        if (validatedForm[key].value.trim() === '') {
+          validatedForm[key].error = 'Required'
+          hasErrors = true
+        }
+      }
+
+      // Validate email
+      if (
+        validatedForm[key].type.includes('email') &&
+        validatedForm[key].value.trim() !== ''
+      ) {
+        if (!generalFormatter.validateEmailFormat(validatedForm[key].value)) {
+          validatedForm[key].error = 'Invalid email'
+          hasErrors = true
         }
       }
     }
@@ -34,7 +50,7 @@ export const validateInputs = (
 
   return {
     form: validatedForm,
-    isValid
+    hasErrors
   }
 }
 

@@ -1,5 +1,6 @@
 import styles from '../../styles/Buttons.module.css'
 import { useSession, signIn, signOut } from 'next-auth/react'
+import { Button } from '../index'
 
 const LoginButton = () => {
   const { data: session } = useSession()

@@ -1,20 +1,24 @@
 .auth_container {
   display: grid;
-  grid-template-columns: 25% 70%;
+  grid-template-columns: 25% 75%;
+  gap: 1rem;
+  background-image: url(../public/BackgroundOne.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .auth_form {
+  background-color: var(--color-white);
   height: 100vh;
   display: flex;
   padding: 50px;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
-  background-color: lightblue;
+  gap: 0.5rem;
 }
 
 .auth_form_section {
-  margin-bottom: 2rem;
+  margin-bottom: 0.75rem;
 }
 
 .auth_form_header {
@@ -30,4 +34,10 @@
 
 .auth_form_subtitle {
   font-size: 1.75rem;
+  color: var(--color-blue);
+}
+
+.link_span {
+  cursor: pointer;
+  color: var(--color-blue);
 }

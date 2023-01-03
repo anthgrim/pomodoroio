@@ -1,7 +1,15 @@
 .button {
+  width: 100%;
   cursor: pointer;
   padding: 10px;
-  border-radius: var(--border-radius);
   font-size: 1rem;
   border: none;
+  color: white;
+  background-color: var(--color-blue);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+.button:hover {
+  transform: translateY(-5px);
 }

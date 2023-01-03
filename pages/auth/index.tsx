@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import Image from 'next/image'
 import styles from '../../styles/Forms.module.css'
-import { Meta, SignIn, SignUp } from '../../components'
+import { SignIn, SignUp, AuthFormLogo } from '../../components'
 
 interface TargetAuthForm {
   signIn: boolean
@@ -32,28 +33,17 @@ const Index = () => {
   }
 
   return (
-    <>
-      <Meta title='Sign In - Pomodoro.io' />
-      <div className={styles.auth_container}>
-        <section id='form'>
-          {authForm.signIn && (
-            <SignIn
-              target={'signUp'}
-              buttonTitle={'Sign up here!'}
-              toggleAction={toggleActiveForm}
-            />
-          )}
-          {authForm.signUp && (
-            <SignUp
-              target={'signIn'}
-              buttonTitle={'Sign in here!'}
-              toggleAction={toggleActiveForm}
-            />
-          )}
-        </section>
-        <section id='image'>Image</section>
+    <div className={styles.auth_container}>
+      <div className={styles.auth_form}>
+        <AuthFormLogo logoUrl='logo' />
+        {authForm.signIn && (
+          <SignIn toggleAction={() => toggleActiveForm('signUp')} />
+        )}
+        {authForm.signUp && (
+          <SignUp toggleAction={() => toggleActiveForm('signIn')} />
+        )}
       </div>
-    </>
+    </div>
   )
 }
 

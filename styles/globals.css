@@ -7,6 +7,10 @@
   --color-font: #2d2d2d;
   --color-font-secondary: #5e5e5e;
   --color-blue: #2f89fc;
+  --color-red: #f65555;
+  --color-white: #ffffff;
+
+  --transition: 0.25s ease-in-out;
 }
 
 * {
