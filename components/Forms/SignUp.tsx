@@ -111,7 +111,7 @@ const SignUp = ({ toggleAction }: AuthFormProps) => {
             label='Confirm Password'
             inputName='confirmPassword'
             value={formData.confirmPassword.value}
-            type='confirmPassword'
+            type='password'
             errorMessage={formData.confirmPassword.error}
             handleChange={(e) => handleInputChange(e, formData, setFormData)}
             placeholder='Confirm Password'
