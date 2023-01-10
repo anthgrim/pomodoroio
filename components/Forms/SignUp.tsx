@@ -3,6 +3,7 @@ import React, { MouseEvent, useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { AuthFormHeader, Input, Button, Meta } from '../index'
 import { AuthFormProps, SignUpForm } from '../../types'
+import axios from 'axios'
 import { validateAuthInputs, handleInputChange } from '../../utils/FormUtils'
 
 const SignUp = ({ toggleAction }: AuthFormProps) => {
@@ -34,7 +35,7 @@ const SignUp = ({ toggleAction }: AuthFormProps) => {
   })
 
   // Handle Sign In
-  const handleSignUp = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleSignUp = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
     try {
@@ -58,7 +59,8 @@ const SignUp = ({ toggleAction }: AuthFormProps) => {
         password: password.value.trim()
       }
 
-      console.log(signUpPayload)
+      const res = await axios.post('/api/user/signUp', signUpPayload)
+      console.log(res)
     } catch (error) {
       console.log(error)
       return

@@ -1,6 +1,14 @@
-import { Schema, models, model } from 'mongoose'
+import mongoose, { Schema, models, model } from 'mongoose'
 
-const userSchema = new Schema(
+interface User {
+  name: string
+  email: string
+  hashedPassword: string
+  avatarUrl?: string
+  token?: string
+}
+
+const userSchema = new Schema<User>(
   {
     name: {
       type: String,
@@ -18,11 +26,13 @@ const userSchema = new Schema(
     },
     avatarUrl: {
       type: String
+    },
+    token: {
+      type: String
     }
   },
   { timestamps: true }
 )
 
-const User = models.User || model('User', userSchema)
-
-export default User
+export default (mongoose.models.User as mongoose.Model<User>) ||
+  mongoose.model('User', userSchema)
