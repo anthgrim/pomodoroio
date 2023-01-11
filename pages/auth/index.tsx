@@ -7,7 +7,7 @@ interface TargetAuthForm {
   signUp: boolean
 }
 
-const Index = () => {
+const Index = ({ token }) => {
   const [authForm, setAuthForm] = useState<TargetAuthForm>({
     signIn: true,
     signUp: false

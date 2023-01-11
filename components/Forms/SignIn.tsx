@@ -5,8 +5,11 @@ import { AuthFormHeader, Input, Button, Meta } from '../index'
 import { AuthFormProps, SignInForm } from '../../types'
 import axios from 'axios'
 import { validateAuthInputs, handleInputChange } from '../../utils/FormUtils'
+import useAuth from '../../hooks/useAuth'
+import { toast } from 'react-toastify'
 
 const SignIn = ({ toggleAction }: AuthFormProps) => {
+  const { setAuth } = useAuth()
   const [formData, setFormData] = useState<SignInForm>({
     email: {
       value: '',
@@ -42,7 +45,9 @@ const SignIn = ({ toggleAction }: AuthFormProps) => {
 
       const res = await axios.post('/api/user/signIn', signInPayload)
 
-      console.log(res)
+      toast.success(res.data.message)
+      console.log(res.data)
+      setAuth(res.data.token)
     } catch (error) {
       console.log(error)
       return
